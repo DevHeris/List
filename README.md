@@ -1,5 +1,4 @@
 
-```markdown
 # Node.js File Explorer
 
 ## Overview
