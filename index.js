@@ -97,7 +97,9 @@ const { lstat } = fs.promises;
 // Kind of a combination of method 1 and 2
 
 // THE RIGHT WAY
-fs.readdir(process.cwd(), async (err, filenames) => {
+const targetDir = process.argv[2] || process.cwd();
+
+fs.readdir(targetDir, async (err, filenames) => {
   if (err) console.log(err);
 
   const statPromises = filenames.map((filename) => {
@@ -112,7 +114,7 @@ fs.readdir(process.cwd(), async (err, filenames) => {
     if (stats.isFile()) {
       console.log(chalk.blue(filenames[index]));
     } else {
-      console.log(chalk.red(filenames[index]));
+      console.log(chalk.red(filenames[index]) + "/");
     }
   }
 });
